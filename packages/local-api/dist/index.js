@@ -7,6 +7,9 @@ exports.serve = void 0;
 var express_1 = __importDefault(require("express"));
 var serve = function (port, filename, dir) {
     var app = (0, express_1.default)();
+    return new Promise(function (resolve, reject) {
+        app.listen(port, resolve).on('error', reject);
+    });
     app.listen(port, function () {
         console.log('Listening on port', port);
     });
